@@ -11,20 +11,23 @@ import fr.aimespastor.calculator.resolvable.Value;
 
 public class IResolvableParser {
 
-	private static final ArrayList<IOperator> KNOWN_OPERATORS = new ArrayList<>();
+	private static final ArrayList<IOperator> KNOWN_STAGEONE_OPERATORS = new ArrayList<>();
+	private static final ArrayList<IOperator> KNOWN_STAGETWO_OPERATORS = new ArrayList<>();
 	private static final ArrayList<IFunction> KNOWN_FUNCTIONS = new ArrayList<>();
 
 	static {
-		KNOWN_OPERATORS.add(new Plus());
-		KNOWN_OPERATORS.add(new Minus());
-		KNOWN_OPERATORS.add(new Divide());
-		KNOWN_OPERATORS.add(new Multiply());
+		KNOWN_STAGEONE_OPERATORS.add(new Plus());
+		KNOWN_STAGEONE_OPERATORS.add(new Minus());
+		
+		KNOWN_STAGETWO_OPERATORS.add(new Divide());
+		KNOWN_STAGETWO_OPERATORS.add(new Multiply());
 		
 		KNOWN_FUNCTIONS.add(new SquareRoot());
 	}
 
 	public static IResolvable parse(String equation) {
-		if(equation.startsWith("(") && equation.endsWith(")")) {
+		equation = equation.trim();
+		while(equation.startsWith("(") && equation.endsWith(")")) {
 			int parenthesisCount = 0;
 			boolean shouldRemoveParenthesis = true;
 			for(char c : equation.substring(0, equation.length() - 1).toCharArray()) {
@@ -44,16 +47,26 @@ public class IResolvableParser {
 				StringBuilder builder = new StringBuilder(equation);
 				builder.deleteCharAt(builder.length() - 1);
 				builder.deleteCharAt(0);
-				equation = builder.toString();
-			}
+				equation = builder.toString().trim();
+			}else break;
 //			System.out.println("new equation : ");
 //			System.out.println(equation);
 		}
 
-		for(IOperator operator : KNOWN_OPERATORS) {
+		
+		OperatorOperation resolvable = null;
+		for(IOperator operator : KNOWN_STAGEONE_OPERATORS) {
 			OperatorOperation operation = operator.parse(equation);
-			if(operation != null) return operation;
+			if(operation != null && (resolvable == null || operation.index > resolvable.index)) resolvable = operation;
 		}
+		if(resolvable != null) return resolvable;
+		
+		for(IOperator operator : KNOWN_STAGETWO_OPERATORS) {
+			OperatorOperation operation = operator.parse(equation);
+			if(operation != null && (resolvable == null || operation.index > resolvable.index)) resolvable = operation;
+		}
+		if(resolvable != null) return resolvable;
+		
 		for(IFunction function : KNOWN_FUNCTIONS) {
 			FunctionOperation operation = function.parse(equation);
 			if(operation != null) return operation;
@@ -66,7 +79,7 @@ public class IResolvableParser {
 				double value = Double.parseDouble("0" + equation);
 				return new Value(value);
 			}catch (Exception e1) {
-				throw new IllegalArgumentException("Was unable to identify part of the equation : " + equation);
+				throw new IllegalArgumentException("Was unable to identify part of the equation : \"" + equation + "\"");
 			}
 		}
 

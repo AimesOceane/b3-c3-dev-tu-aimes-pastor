@@ -11,4 +11,9 @@ public class Minus extends SimpleOperator{
 		return a - b;
 	}
 
+	@Override
+	public String toString() {
+		return "-";
+	}
+
 }

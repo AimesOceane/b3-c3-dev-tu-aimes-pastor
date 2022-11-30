@@ -17,4 +17,9 @@ public class FunctionOperation implements IResolvable{
 		return this.function.operate(a.resolve());
 	}
 	
+	@Override
+	public String toString() {
+		return function + "( " + a + " )";
+	}
+	
 }

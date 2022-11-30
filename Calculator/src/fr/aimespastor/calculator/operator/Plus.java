@@ -10,5 +10,10 @@ public class Plus extends SimpleOperator{
 	public double operate(double a, double b) {
 		return a + b;
 	}
+
+	@Override
+	public String toString() {
+		return "+";
+	}
 }
 

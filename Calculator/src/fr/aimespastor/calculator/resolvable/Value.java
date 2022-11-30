@@ -12,4 +12,9 @@ public class Value implements IResolvable{
 	public double resolve() throws IllegalArgumentException {
 		return value;
 	}
+	
+	@Override
+	public String toString() {
+		return value + "";
+	}
 }

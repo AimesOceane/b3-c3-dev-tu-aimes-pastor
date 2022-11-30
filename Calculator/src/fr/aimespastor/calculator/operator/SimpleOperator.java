@@ -16,6 +16,7 @@ public abstract class SimpleOperator implements IOperator {
 		String b = "";
 		StringBuilder buffer = new StringBuilder(equation.length());
 		int parenthesisCount = 0;
+		int index = -1;
 		boolean matches = false;
 		
 		for(char c : equation.toCharArray()) {
@@ -23,6 +24,7 @@ public abstract class SimpleOperator implements IOperator {
 				buffer.append(c);
 				continue;
 			}
+			index ++;
 			if(c == '(') parenthesisCount ++;
 			else if(c == ')') parenthesisCount --;
 			if(parenthesisCount > 0 || c != character) {
@@ -35,7 +37,7 @@ public abstract class SimpleOperator implements IOperator {
 		}
 		b = buffer.toString();
 		if(!matches) return null;
-		return new OperatorOperation(this, IResolvableParser.parse(a), IResolvableParser.parse(b));
+		return new OperatorOperation(this, IResolvableParser.parse(a), IResolvableParser.parse(b), index);
 	}
 
 }

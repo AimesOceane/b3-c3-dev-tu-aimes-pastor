@@ -16,4 +16,8 @@ public class SquareRoot implements IFunction{
 		return new FunctionOperation(this, IResolvableParser.parse(equation.replaceFirst("sqrt", "")));
 	}
 
+	@Override
+	public String toString() {
+		return "sqrt";
+	}
 }

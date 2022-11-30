@@ -54,4 +54,8 @@ public class Equation implements IResolvable{
 		return equation.resolve();
 	}
 
+	@Override
+	public String toString() {
+		return equation.toString();
+	}
 }

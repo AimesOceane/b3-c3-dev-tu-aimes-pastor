@@ -13,6 +13,7 @@ public class Calculator {
 			String input = sc.nextLine();
 			if(input.equalsIgnoreCase("exit")) return;
 			Equation equation = new Equation(input);
+			System.out.println(equation);
 			System.out.println(equation.resolve());
 		}
 	}

@@ -11,4 +11,9 @@ public class Divide extends SimpleOperator{
 		return a/b;
 	}
 
+	@Override
+	public String toString() {
+		return "/";
+	}
+	
 }
