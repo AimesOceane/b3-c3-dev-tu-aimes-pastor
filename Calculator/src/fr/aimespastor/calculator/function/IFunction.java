@@ -1,6 +1,6 @@
 package fr.aimespastor.calculator.function;
 
-import fr.aimespastor.calculator.resolvable.FunctionOperation;
+import fr.aimespastor.calculator.operation.FunctionOperation;
 
 public interface IFunction {
 

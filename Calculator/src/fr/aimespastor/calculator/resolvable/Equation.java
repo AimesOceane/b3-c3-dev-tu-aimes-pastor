@@ -2,8 +2,6 @@ package fr.aimespastor.calculator.resolvable;
 
 import java.util.ArrayList;
 
-import fr.aimespastor.calculator.operator.IResolvableParser;
-
 public class Equation implements IResolvable{
 
 	private IResolvable equation;
@@ -40,10 +38,10 @@ public class Equation implements IResolvable{
 		if(buffer.length() != 0) parts.add(buffer.toString().trim());
 		if(parenthesisCount != 0) throw new IllegalArgumentException("Expected " + parenthesisCount +" closing parenthesis but never found any");
 		
-		StringBuilder builder = new StringBuilder();
-		for(String part : parts) {
-			builder.append(" | " + part);
-		}
+//		StringBuilder builder = new StringBuilder();
+//		for(String part : parts) {
+//			builder.append(" | " + part);
+//		}
 		
 		this.equation = IResolvableParser.parse(equation);
 		

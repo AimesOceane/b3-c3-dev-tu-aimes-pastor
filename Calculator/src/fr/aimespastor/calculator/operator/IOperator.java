@@ -1,6 +1,6 @@
 package fr.aimespastor.calculator.operator;
 
-import fr.aimespastor.calculator.resolvable.OperatorOperation;
+import fr.aimespastor.calculator.operation.OperatorOperation;
 
 public interface IOperator {
 

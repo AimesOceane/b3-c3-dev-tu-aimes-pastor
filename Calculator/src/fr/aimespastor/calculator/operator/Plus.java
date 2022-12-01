@@ -1,9 +1,9 @@
 package fr.aimespastor.calculator.operator;
 
-public class Plus extends SimpleOperator{
+public class Plus extends AbstractSimpleOperator{
 	
 	public Plus() {
-		super('+');
+		super(getCharacter());
 	}
 	
 	@Override
@@ -11,9 +11,8 @@ public class Plus extends SimpleOperator{
 		return a + b;
 	}
 
-	@Override
-	public String toString() {
-		return "+";
+	public static char getCharacter() {
+		return '+';
 	}
 }
 

@@ -1,7 +1,7 @@
 package fr.aimespastor.calculator.function;
 
-import fr.aimespastor.calculator.operator.IResolvableParser;
-import fr.aimespastor.calculator.resolvable.FunctionOperation;
+import fr.aimespastor.calculator.operation.FunctionOperation;
+import fr.aimespastor.calculator.resolvable.IResolvableParser;
 
 public class SquareRoot implements IFunction{
 

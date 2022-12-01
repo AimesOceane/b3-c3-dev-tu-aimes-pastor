@@ -1,9 +1,9 @@
 package fr.aimespastor.calculator.operator;
 
-public class Multiply extends SimpleOperator{
+public class Multiply extends AbstractSimpleOperator{
 
 	public Multiply() {
-		super('*');
+		super(getCharacter());
 	}
 
 	@Override
@@ -11,8 +11,7 @@ public class Multiply extends SimpleOperator{
 		return a*b;
 	}
 
-	@Override
-	public String toString() {
-		return "*";
+	public static char getCharacter() {
+		return '*';
 	}
 }

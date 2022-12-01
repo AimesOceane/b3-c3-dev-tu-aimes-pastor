@@ -1,8 +1,9 @@
-package fr.aimespastor.calculator.resolvable;
+package fr.aimespastor.calculator.operation;
 
 import fr.aimespastor.calculator.operator.IOperator;
+import fr.aimespastor.calculator.resolvable.IResolvable;
 
-public class OperatorOperation implements IResolvable{
+public class OperatorOperation implements IOperation{
 
 	private IOperator operator;
 	private IResolvable a;
@@ -26,5 +27,8 @@ public class OperatorOperation implements IResolvable{
 		return "(" + a + " " + operator + " " + b + ")";
 	}
 	
-	
+	@Override
+	public String getOperationName() {
+		return this.operator.getClass().getSimpleName().toUpperCase();
+	}
 }

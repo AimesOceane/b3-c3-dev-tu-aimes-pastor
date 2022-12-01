@@ -1,8 +1,9 @@
-package fr.aimespastor.calculator.resolvable;
+package fr.aimespastor.calculator.operation;
 
 import fr.aimespastor.calculator.function.IFunction;
+import fr.aimespastor.calculator.resolvable.IResolvable;
 
-public class FunctionOperation implements IResolvable{
+public class FunctionOperation implements IOperation{
 
 	private IFunction function;
 	private IResolvable a;
@@ -20,6 +21,11 @@ public class FunctionOperation implements IResolvable{
 	@Override
 	public String toString() {
 		return function + "( " + a + " )";
+	}
+
+	@Override
+	public String getOperationName() {
+		return getClass().getSimpleName().toUpperCase();
 	}
 	
 }

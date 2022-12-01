@@ -1,9 +1,9 @@
 package fr.aimespastor.calculator.operator;
 
-public class Divide extends SimpleOperator{
+public class Divide extends AbstractSimpleOperator{
 
 	public Divide() {
-		super('/');
+		super(getCharacter());
 	}
 
 	@Override
@@ -11,9 +11,8 @@ public class Divide extends SimpleOperator{
 		return a/b;
 	}
 
-	@Override
-	public String toString() {
-		return "/";
+	public static char getCharacter() {
+		return '/';
 	}
 	
 }

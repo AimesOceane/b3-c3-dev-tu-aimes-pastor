@@ -1,6 +1,6 @@
-package fr.aimespastor.calculator.resolvable;
+package fr.aimespastor.calculator.operation;
 
-public class Value implements IResolvable{
+public class Value implements IOperation{
 
 	private double value;
 	
@@ -16,5 +16,10 @@ public class Value implements IResolvable{
 	@Override
 	public String toString() {
 		return value + "";
+	}
+
+	@Override
+	public String getOperationName() {
+		return "VALUE";
 	}
 }
